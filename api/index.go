@@ -36,6 +36,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+	w.Header().Set("Content-Type", "image/svg+xml")
 	_, _ = io.Copy(w, bytes.NewReader(badgeBytes))
 }
 
