@@ -19,7 +19,7 @@ import (
 
 func Handler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Cache-Control", "no-cache,max-age=0,no-store,s-maxage=0,proxy-revalidate")
-	
+
 	currency, balance, err := getBalance()
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -27,7 +27,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	status := currency + " " + balance
-	subject := "阿里云余额"
+	subject := "  阿里云余额  "
 	lang := r.URL.Query().Get("lang")
 	if lang == "en" {
 		subject = "Aliyun Balance"
