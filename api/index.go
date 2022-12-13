@@ -20,7 +20,7 @@ import (
 func Handler(w http.ResponseWriter, r *http.Request) {
 	currency, balance, err := getBalance()
 	if err != nil {
-		w.WriteHeader(http.StatusInternalServerError)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
@@ -33,7 +33,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	badgeBytes, err := badge.RenderBytes(subject, status, "#ff6a00")
 	if err != nil {
-		w.WriteHeader(http.StatusInternalServerError)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 	_, _ = io.Copy(w, bytes.NewReader(badgeBytes))
