@@ -27,7 +27,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	status := currency + " " + balance
-	subject := "  阿里云余额  "
+	subject := "  阿里云余额   "
 	lang := r.URL.Query().Get("lang")
 	if lang == "en" {
 		subject = "Aliyun Balance"
